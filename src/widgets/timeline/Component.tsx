@@ -1,39 +1,53 @@
 "use client";
 
 import { timelineData } from "@/pages-data/timeline";
+import { TimelineItem as TimelineItemComponent } from "./TimelineItem";
+import { useRef, useState } from "react";
+import { useLanguage } from "@/features/language-switcher/model/useLanguage";
 
 export const TimeLine = () => {
+  const containerRef = useRef<HTMLElement>(null);
+  const [activeId, setActiveId] = useState<number | null>(null);
+  const { current: lang } = useLanguage();
+
+  const data = timelineData[lang];
+  const total = data.length;
+
+  const progressPercent =
+    activeId !== null ? ((activeId - 1) / (total - 1)) * 100 : 0;
+
   return (
-    <section className="max-w-7xl mx-auto w-full p-5">
-      <h2 className="text-3xl font-bold mb-6">Timeline</h2>
+    <section
+      ref={containerRef}
+      data-scrollable
+      className="h-screen no-scrollbar overflow-y-auto max-w-7xl mx-auto w-full p-5 pt-10 relative"
+    >
+      <h2 className="text-3xl font-bold border-b-2 border-neutral-700/70 text-white w-full p-5">
+        {lang === "en" ? "Timeline" : "Хронология"}
+      </h2>
 
-      <ol className="relative border-l border-neutral-700/70 pl-4">
-        {timelineData.map((item) => (
-          <li key={item.id} className="mb-8 ml-2">
-            <span className="absolute -left-[7px] mt-1.5 h-3 w-3 rounded-full bg-indigo-500 shadow-[0_0_0_4px_rgba(129,140,248,0.35)]" />
+      <div className="relative mt-16">
+        {/* CENTRAL LINE */}
+        <div className="absolute left-1/2 top-0 -translate-x-1/2 h-full">
+          <div className="absolute top-0 bottom-0 w-px bg-neutral-700/40" />
+          <div
+            className="absolute top-0 w-px bg-indigo-500"
+            style={{ height: `${progressPercent}%` }}
+          />
+        </div>
 
-            <div className="flex flex-col gap-1">
-              <div className="text-xs uppercase tracking-wide text-neutral-400">
-                Этап {item.id}
-              </div>
-
-              <h3 className="text-lg font-semibold text-neutral-100">
-                {item.title}
-              </h3>
-
-              {item.subtitle && (
-                <p className="text-sm text-neutral-300">{item.subtitle}</p>
-              )}
-
-              {item.description && (
-                <p className="text-sm text-neutral-400 mt-1">
-                  {item.description}
-                </p>
-              )}
-            </div>
-          </li>
-        ))}
-      </ol>
+        {/* CONTENT */}
+        <ol className="relative space-y-24">
+          {data.map((item) => (
+            <TimelineItemComponent
+              key={item.id}
+              {...item}
+              activeId={activeId}
+              onActive={setActiveId}
+            />
+          ))}
+        </ol>
+      </div>
     </section>
   );
 };

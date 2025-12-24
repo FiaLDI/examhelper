@@ -5,7 +5,7 @@ export const Header = () => {
 
     return (
         <ToDown>
-            <nav>
+            <nav className="absolute w-full top-0 bg-fuchsia-100 p-5">
                 <ul className="flex gap-5">
                     <NavLink href="#hero" title="Home"/>
                     <NavLink href="#about" title="About"/>

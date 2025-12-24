@@ -1,137 +1,119 @@
-import { SkillCategory } from "@/entities/skills-description/interface";
+import { Language } from "@/features/language-switcher/model/useLanguageStore";
 
-export const skillsData: SkillCategory[] = [
-  {
-    title: "Frontend",
-    items: [
-      {
-        title: "React.js",
-        description: "Создание сложных UI, управление состоянием, кастомные хуки, оптимизация рендера.",
-        time: "с 2023"
-      },
-      {
-        title: "Next.js",
-        description: "Разработка fullstack-приложений, SSR/SSG, API Routes, серверные компоненты.",
-        time: "с 2023"
-      },
-      {
-        title: "TailwindCSS",
-        description: "Построение адаптивных интерфейсов, создание дизайн-систем, кастомизация UI.",
-        time: "с 2023"
-      },
-      {
-        title: "Redux Toolkit",
-        description: "Архитектура глобального состояния, RTK Query, оптимизация state-flow.",
-        time: "с 2023"
-      },
-      {
-        title: "Framer Motion",
-        description: "Анимации интерфейсов, плавные переходы, UX-улучшения.",
-        time: "с 2024"
-      },
-    ],
-  },
+/* ---------------------------------- */
+/* TYPES */
+/* ---------------------------------- */
 
-  {
-    title: "Backend",
-    items: [
-      {
-        title: "Nest.js",
-        description: "Модульная backend-архитектура, Guards, Providers, WebSocket-шлюзы.",
-        time: "с 2023"
-      },
-      {
-        title: "Node.js",
-        description: "Реализация API, real-time сервисов, сигнальных серверов для WebRTC.",
-        time: "с 2022"
-      },
-      {
-        title: "Express.js",
-        description: "Легковесные REST API, middleware, шаблонизаторы.",
-        time: "с 2022"
-      },
-      {
-        title: "PostgreSQL",
-        description: "Проектирование схем, запросы, индексы, оптимизация.",
-        time: "с 2023"
-      },
-      {
-        title: "Prisma",
-        description: "ORM слои, миграции, типобезопасные запросы, реляции.",
-        time: "с 2023"
-      },
-      {
-        title: "Redis",
-        description: "Кэширование, хранение сессий, очереди, Pub/Sub для real-time.",
-        time: "с 2023"
-      },
-      {
-        title: "Socket.IO",
-        description: "Real-time события, комнаты, приватные каналы, чат-сервисы.",
-        time: "с 2023"
-      },
-    ],
-  },
+export type SkillGroup = {
+  level: string;
+  description: string;
+  glow?: boolean;
+  items: {
+    capability: string;
+    stack: string[];
+  }[];
+};
 
-  {
-    title: "Infrastructure",
-    items: [
-      {
-        title: "Docker",
-        description: "Контейнеризация сервисов, docker-compose, dev/test окружения.",
-        time: "с 2023"
-      },
-      {
-        title: "Nginx",
-        description: "Reverse proxy, конфигурация SSL, балансировка, статическая выдача.",
-        time: "с 2023"
-      },
-      {
-        title: "Git",
-        description: "Фича-ветки, rebase/merge, CI/CD, работа в монорепозитории.",
-        time: "с 2022"
-      },
-      {
-        title: "npm / pnpm / bun",
-        description: "Управление пакетами, скрипты, быстрые рантаймы (Bun).",
-        time: "с 2022"
-      },
-    ],
-  },
+/* ---------------------------------- */
+/* SKILLS DATA */
+/* ---------------------------------- */
 
-  {
-    title: "GameDev & Desktop",
-    items: [
-      {
-        title: "Unity (URP / VFX Graph / Shader Graph)",
-        description: "Создание визуальных эффектов, материалов, оптимизация рендера.",
-        time: "с 2022"
-      },
-      {
-        title: "C#",
-        description: "Архитектура игровых систем, события, async, паттерны.",
-        time: "с 2022"
-      },
-      {
-        title: "FishNet Networking",
-        description: "Синхронизация состояния, сетевые события, объектные спавны.",
-        time: "с 2023"
-      },
-      {
-        title: "ScriptableObjects Architecture",
-        description: "Данные, конфигурации, Ability/Buff системы, SO-driven дизайн.",
-        time: "с 2022"
-      },
-      {
-        title: "Profiling & Optimization",
-        description: "Оптимизация GC, профилирование кадров, работа с памятью.",
-        time: "с 2023"
-      },
-      {
-        title: "GPU Instancing",
-        description: "Оптимизация массовых объектов, генерация окружения.",
-        time: "с 2023"
-      },
-    ],
-  },
-];
+export const skillsData: Record<Language, SkillGroup[]> = {
+  en: [
+    {
+      level: "Core Expertise",
+      description:
+        "Areas where I design systems end-to-end and make architectural decisions.",
+      glow: true,
+      items: [
+        {
+          capability: "Designing scalable frontend architectures",
+          stack: ["React", "Next.js", "TypeScript", "FSD"],
+        },
+        {
+          capability: "Building real-time systems",
+          stack: ["WebSockets", "Redis", "Node.js"],
+        },
+        {
+          capability: "State & data flow management",
+          stack: ["Zustand", "React Query"],
+        },
+      ],
+    },
+    {
+      level: "Supporting Stack",
+      description:
+        "Technologies I use confidently to support and scale core solutions.",
+      items: [
+        {
+          capability: "API & data layer",
+          stack: ["Prisma", "PostgreSQL", "REST", "GraphQL"],
+        },
+        {
+          capability: "Tooling & developer experience",
+          stack: ["Docker", "CI/CD", "ESLint", "Prettier"],
+        },
+      ],
+    },
+    {
+      level: "Contextual Knowledge",
+      description:
+        "Areas I explore or use for experimentation and side projects.",
+      items: [
+        {
+          capability: "Native & experimental tooling",
+          stack: ["Rust", "Tauri", "Unity", "WebRTC"],
+        },
+      ],
+    },
+  ],
+
+  ru: [
+    {
+      level: "Ключевая экспертиза",
+      description:
+        "Области, где я проектирую системы целиком и принимаю архитектурные решения.",
+      glow: true,
+      items: [
+        {
+          capability: "Проектирование масштабируемой frontend-архитектуры",
+          stack: ["React", "Next.js", "TypeScript", "FSD"],
+        },
+        {
+          capability: "Разработка real-time систем",
+          stack: ["WebSockets", "Redis", "Node.js"],
+        },
+        {
+          capability: "Управление состоянием и потоками данных",
+          stack: ["Zustand", "React Query"],
+        },
+      ],
+    },
+    {
+      level: "Поддерживающий стек",
+      description:
+        "Технологии, которые я уверенно использую для поддержки и масштабирования решений.",
+      items: [
+        {
+          capability: "API и слой данных",
+          stack: ["Prisma", "PostgreSQL", "REST", "GraphQL"],
+        },
+        {
+          capability: "Инструменты и опыт разработки",
+          stack: ["Docker", "CI/CD", "ESLint", "Prettier"],
+        },
+      ],
+    },
+    {
+      level: "Контекстные знания",
+      description:
+        "Области, которые я изучаю или использую для экспериментов и pet-проектов.",
+      items: [
+        {
+          capability: "Нативные и экспериментальные инструменты",
+          stack: ["Rust", "Tauri", "Unity", "WebRTC"],
+        },
+      ],
+    },
+  ],
+};
