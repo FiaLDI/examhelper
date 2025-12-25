@@ -1,23 +1,46 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
-import { skillsData } from "@/pages-data/skills";
-import { useLanguage } from "@/features/language-switcher/model/useLanguage";
+import { useRef, useEffect } from "react";
+import { useMounted } from "@/shared/utils/useMounted";
+import { useDict } from "@/shared/utils/useDict";
+import { SkillsDict } from "@/pages-data/skills";
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
+const SCROLL_SPEED = 0.4; // ← регулируй (0.25–0.5)
 
-export const Skills = () => {
+type SkillsProps = {
+  skillsDict: SkillsDict;
+};
+
+export const Skills = ({ skillsDict }: SkillsProps) => {
   const ref = useRef<HTMLElement>(null);
-  const { current: lang } = useLanguage();
+  const mounted = useMounted();
 
-  const SKILLS = skillsData[lang];
+  /* ---------- SLOW SCROLL ---------- */
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
 
+    const onWheel = (e: WheelEvent) => {
+      e.preventDefault();
+      el.scrollTop += e.deltaY * SCROLL_SPEED;
+    };
+
+    el.addEventListener("wheel", onWheel, { passive: false });
+    return () => el.removeEventListener("wheel", onWheel);
+  }, []);
+
+  /* ---------- FRAMER ---------- */
   const { scrollYProgress } = useScroll({
     container: ref,
   });
 
   const bgShift = useTransform(scrollYProgress, [0, 1], [0, -120]);
+
+  /* ---------- DATA ---------- */
+  const clientDict = useDict("skills");
+  const data = mounted ? clientDict : skillsDict;
 
   return (
     <section
@@ -40,7 +63,7 @@ export const Skills = () => {
           transition={{ duration: 0.6, ease: EASE }}
           className="text-4xl font-semibold tracking-tight"
         >
-          {lang === "en" ? "Skills" : "Навыки"}
+          {data.title}
         </motion.h2>
 
         <motion.p
@@ -50,15 +73,13 @@ export const Skills = () => {
           transition={{ delay: 0.1, duration: 0.5, ease: EASE }}
           className="mt-4 text-sm text-neutral-400"
         >
-          {lang === "en"
-            ? "A deeper look into how I build systems, not just what tools I use."
-            : "Подробный взгляд на то, как я проектирую системы, а не просто список технологий."}
+          {data.subtitle}
         </motion.p>
       </div>
 
       {/* CONTENT */}
       <div className="space-y-32 pb-32">
-        {SKILLS.map((group) => (
+        {data.groups.map((group) => (
           <motion.section
             key={group.level}
             initial={{ opacity: 0, y: 40 }}

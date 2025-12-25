@@ -1,17 +1,19 @@
 import { create } from "zustand";
+import { Language } from "./types";
 
-interface LanguageState {
-    current: Language;
+type LanguageStore = {
+  lang: Language;
+  setLang: (lang: Language) => void;
+  hydrate: (lang: Language) => void;
+};
 
-    setCurrent: (current: Language) => void;
-}
+export const useLanguageStore = create<LanguageStore>((set) => ({
+  lang: "en",
 
-export const LANGUAGES = ["en", "ru"] as const;
-export type Language = typeof LANGUAGES[number];
+  hydrate: (lang) => set({ lang }),
 
-
-export const useLanguageStore = create<LanguageState>(set => ({
-    current: "en",
-
-    setCurrent: (current: Language) => set({ current: current }),
+  setLang: (lang) => {
+    document.cookie = `lang=${lang}; path=/; max-age=31536000`;
+    set({ lang });
+  },
 }));

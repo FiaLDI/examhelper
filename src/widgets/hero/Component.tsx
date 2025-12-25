@@ -1,20 +1,25 @@
 "use client";
 
 import Image from "next/image";
-import { HeroData } from "@/pages-data/hero";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import { useEffect, useContext } from "react";
 import { useMounted } from "@/shared/utils/useMounted";
 import { TypingText } from "@/shared/utils/TypingText";
 import { FullpageContext } from "@/shared/lib/scroll-to-section/FullpageContext";
-import { useLanguage } from "@/features/language-switcher/model/useLanguage";
+import { HeroDict } from "@/pages-data/hero";
+import { useDict } from "@/shared/utils/useDict";
 
-export const Hero = () => {
+type HeroProps = {
+  heroDict: HeroDict;
+};
+
+export const Hero = ({ heroDict }: HeroProps) => {
   const mounted = useMounted();
   const { setIndex } = useContext(FullpageContext);
-  const { current: lang } = useLanguage();
 
-  const data = HeroData[lang];
+  const clientDict = useDict("hero");
+
+  const hero = mounted ? clientDict : heroDict;
 
   /* ---------- PARALLAX ---------- */
   const mouseX = useMotionValue(0);
@@ -39,10 +44,9 @@ export const Hero = () => {
         {/* LEFT */}
         <div className="flex flex-col gap-8 max-w-xl">
 
-          {/* TITLE */}
           <div className="relative inline-block">
             <h1 className="text-5xl font-semibold tracking-tight leading-tight">
-              {data.title}
+              {hero.title}
             </h1>
 
             <motion.span
@@ -54,16 +58,19 @@ export const Hero = () => {
           </div>
 
           <p className="text-lg text-neutral-300">
-            {data.subTitle}
+            {hero.subTitle}
           </p>
 
           <p className="text-xl text-neutral-400 min-h-12">
-            {mounted ? <TypingText text={data.value} /> : data.value}
+            {mounted ? <TypingText text={hero.value} /> : hero.value}
           </p>
 
           <div className="flex flex-wrap gap-3">
-            {data.highlights.map((val, idx) => (
-              <span key={idx} className="px-4 py-1.5 rounded-full border border-neutral-700 bg-neutral-900/40 text-sm text-neutral-200">
+            {hero.highlights.map((val, idx) => (
+              <span
+                key={idx}
+                className="px-4 py-1.5 rounded-full border border-neutral-700 bg-neutral-900/40 text-sm text-neutral-200"
+              >
                 {val}
               </span>
             ))}
@@ -74,29 +81,33 @@ export const Hero = () => {
               onClick={() => setIndex?.(2)}
               className="px-6 py-2.5 rounded-xl bg-indigo-500/90 hover:bg-indigo-500 text-sm font-medium transition"
             >
-              {data.ctaPrimary}
+              {hero.ctaPrimary}
             </button>
 
             <button
               onClick={() => setIndex?.(1)}
               className="px-6 py-2.5 rounded-xl border border-neutral-700 bg-neutral-900/40 text-sm font-medium hover:bg-neutral-800 transition"
             >
-              {data.ctaSkills}
+              {hero.ctaSkills}
             </button>
           </div>
         </div>
 
         {/* RIGHT */}
-        <motion.div style={{ x: imgX, y: imgY }} className="relative hidden md:block">
+        <motion.div
+          style={{ x: imgX, y: imgY }}
+          className="relative hidden md:block"
+        >
           <div className="absolute -inset-12 rounded-full bg-indigo-500/20 blur-[140px]" />
           <Image
-            src={data.image}
+            src={hero.image}
             width={420}
             height={420}
-            alt={data.title}
+            alt={hero.title}
             className="relative z-10 rounded-2xl border border-neutral-800 bg-neutral-900/40 backdrop-blur"
           />
         </motion.div>
+
       </div>
     </section>
   );

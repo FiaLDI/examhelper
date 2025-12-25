@@ -1,6 +1,6 @@
-import { Language } from "@/features/language-switcher/model/useLanguageStore";
+import { Language } from "@/features/language-switcher/model/types";
 
-export type ContactContent = {
+export type ContactDict = {
   title: string;
   subtitle: string;
   messageTitle: string;
@@ -14,7 +14,7 @@ export const CONTACT_STATIC = {
   telegram: "https://t.me/Leoniditlo",
 };
 
-export const ContactData: Record<Language, ContactContent> = {
+export const ContactData: Record<Language, ContactDict> = {
   en: {
     title: "Let’s get in touch",
     subtitle:

@@ -1,32 +1,42 @@
 "use client";
 
-import { useLanguage } from "@/features/language-switcher/model/useLanguage";
-import { projectsData, CATEGORY_META } from "@/pages-data/projects";
 import { motion } from "framer-motion";
 import { useRef, useState } from "react";
+import { useMounted } from "@/shared/utils/useMounted";
+import { ProjectsDict, ProjectCategory } from "@/pages-data/projects";
+import { useDict } from "@/shared/utils/useDict";
 
-const HEAT: Record<string, string> = {
+const HEAT: Record<ProjectCategory, string> = {
   Core: "from-indigo-500/20",
   Contribution: "from-sky-500/15",
   Pet: "from-emerald-500/10",
   Legacy: "from-neutral-500/5",
 };
 
-export const ProjectList = () => {
+type ProjectListProps = {
+  projectsDict: ProjectsDict; // SSR
+};
+
+export const ProjectList = ({ projectsDict }: ProjectListProps) => {
   const containerRef = useRef<HTMLElement>(null);
-  const [activeCategory, setActiveCategory] = useState<string | null>(null);
-  const { current: lang } = useLanguage();
+  const [activeCategory, setActiveCategory] =
+    useState<ProjectCategory | null>(null);
 
-  const data = projectsData[lang];
-  const meta = CATEGORY_META[lang];
+  const mounted = useMounted();
 
-  const grouped = data.reduce((acc, project) => {
+  // CSR словарь
+  const clientDict = useDict("projects");
+
+  // SSR → CSR
+  const data = mounted ? clientDict : projectsDict;
+
+  const grouped = data.items.reduce((acc, project) => {
     acc[project.category] = acc[project.category] || [];
     acc[project.category].push(project);
     return acc;
-  }, {} as Record<string, typeof data>);
+  }, {} as Record<ProjectCategory, typeof data.items>);
 
-  const categories = Object.keys(grouped);
+  const categories = Object.keys(grouped) as ProjectCategory[];
 
   return (
     <section
@@ -35,7 +45,7 @@ export const ProjectList = () => {
       className="h-screen no-scrollbar relative overflow-y-auto max-w-7xl mx-auto w-full p-5 pt-10 text-white"
     >
       <h2 className="text-3xl font-bold border-b-2 border-neutral-700 px-3 py-1">
-        {lang === "en" ? "Projects" : "Проекты"}
+        {data.title}
       </h2>
 
       {/* CATEGORY RAIL */}
@@ -61,7 +71,7 @@ export const ProjectList = () => {
 
       {/* CATEGORIES */}
       <div className="space-y-24 pb-20">
-        {Object.entries(grouped).map(([category, items]) => (
+        {categories.map((category) => (
           <motion.section
             key={category}
             id={`cat-${category}`}
@@ -78,12 +88,12 @@ export const ProjectList = () => {
             <div className="relative z-10 mb-8">
               <h3 className="text-2xl font-semibold mb-2">{category}</h3>
               <p className="text-sm text-neutral-400 max-w-2xl">
-                {meta[category as keyof typeof meta]}
+                {data.categoriesMeta[category]}
               </p>
             </div>
 
             <div className="grid md:grid-cols-2 gap-6">
-              {items.map((project) => (
+              {grouped[category].map((project) => (
                 <motion.div
                   key={project.id}
                   className="p-5 rounded-xl border border-neutral-700 bg-neutral-900/40"

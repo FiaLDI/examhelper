@@ -1,10 +1,11 @@
 "use client";
 
-import { ContactData, CONTACT_STATIC } from "@/pages-data/contact";
 import { motion, Variants } from "framer-motion";
 import { useContext } from "react";
 import { FullpageContext } from "@/shared/lib/scroll-to-section/FullpageContext";
-import { useLanguage } from "@/features/language-switcher/model/useLanguage";
+import { CONTACT_STATIC, ContactDict } from "@/pages-data/contact";
+import { useMounted } from "@/shared/utils/useMounted";
+import { useDict } from "@/shared/utils/useDict";
 
 const CONTACT_INDEX = 4;
 
@@ -29,15 +30,22 @@ const item: Variants = {
   },
 };
 
-export const Contacts = () => {
+type ContactsProps = {
+  contactsDict: ContactDict;
+};
+
+export const Contacts = ({ contactsDict }: ContactsProps) => {
   const ctx = useContext(FullpageContext);
+  const mounted = useMounted();
+
   if (!ctx) return null;
 
   const { index } = ctx;
   const isActive = index === CONTACT_INDEX;
 
-  const { current: lang } = useLanguage();
-  const data = ContactData[lang];
+  const clientDict = useDict("contacts");
+
+  const data = mounted ? clientDict : contactsDict;
 
   return (
     <section className="h-screen max-w-7xl mx-auto w-full px-6">
@@ -75,49 +83,9 @@ export const Contacts = () => {
           <div className="grid md:grid-cols-2 gap-12">
             {/* CONTACT INFO */}
             <motion.div variants={item} className="space-y-6 text-neutral-300">
-              <div>
-                <span className="text-xs uppercase tracking-wide text-neutral-500">
-                  Email
-                </span>
-                <p className="text-lg mt-1">
-                  <a
-                    href={`mailto:${CONTACT_STATIC.email}`}
-                    className="hover:text-indigo-400 transition"
-                  >
-                    {CONTACT_STATIC.email}
-                  </a>
-                </p>
-              </div>
-
-              <div>
-                <span className="text-xs uppercase tracking-wide text-neutral-500">
-                  GitHub
-                </span>
-                <p className="text-lg mt-1">
-                  <a
-                    href={CONTACT_STATIC.github}
-                    target="_blank"
-                    className="hover:text-indigo-400 transition"
-                  >
-                    {CONTACT_STATIC.github}
-                  </a>
-                </p>
-              </div>
-
-              <div>
-                <span className="text-xs uppercase tracking-wide text-neutral-500">
-                  Telegram
-                </span>
-                <p className="text-lg mt-1">
-                  <a
-                    href={CONTACT_STATIC.telegram}
-                    target="_blank"
-                    className="hover:text-indigo-400 transition"
-                  >
-                    {CONTACT_STATIC.telegram}
-                  </a>
-                </p>
-              </div>
+              <ContactItem label="Email" value={CONTACT_STATIC.email} href={`mailto:${CONTACT_STATIC.email}`} />
+              <ContactItem label="GitHub" value={CONTACT_STATIC.github} href={CONTACT_STATIC.github} />
+              <ContactItem label="Telegram" value={CONTACT_STATIC.telegram} href={CONTACT_STATIC.telegram} />
             </motion.div>
 
             {/* FORM */}
@@ -158,3 +126,32 @@ export const Contacts = () => {
     </section>
   );
 };
+
+/* ---------- helpers ---------- */
+
+function ContactItem({
+  label,
+  value,
+  href,
+}: {
+  label: string;
+  value: string;
+  href: string;
+}) {
+  return (
+    <div>
+      <span className="text-xs uppercase tracking-wide text-neutral-500">
+        {label}
+      </span>
+      <p className="text-lg mt-1">
+        <a
+          href={href}
+          target="_blank"
+          className="hover:text-indigo-400 transition"
+        >
+          {value}
+        </a>
+      </p>
+    </div>
+  );
+}

@@ -1,25 +1,24 @@
 "use client";
+import { useLanguageStore } from "@/features/language-switcher/model/useLanguageStore";
 
-import { useLanguage } from "../model/useLanguage";
-import { Language } from "../model/useLanguageStore";
+export function LanguageSwitcher() {
+  const { lang, setLang } = useLanguageStore();
 
-export const LanguageSwitcher = () => {
+  return (
+    <div className="flex gap-2 fixed z-30 right-0 top-0 bg-neutral-800 p-1 text-white text-sm [&>button]:p-2 [&>button]:cursor-pointer [&>button]:data-[lang=true]:bg-blue-600">
+      <button
+      data-lang={lang === "en"}
+        onClick={() => setLang("en")}
+      >
+        EN
+      </button>
+      <button
+        data-lang={lang === "ru"}
+        onClick={() => setLang("ru")}
+      >
+        RU
+      </button>
+    </div>
+  );
+}
 
-    const {current, setCurrent} = useLanguage();
-
-    return (
-        <div className="bg-neutral-800/50 backdrop-blur-3xl p-1 flex lg:flex-col gap-1 w-fit fixed z-50 right-0 top-0">
-            {["en", "ru"].map((val, idx) => {
-                const isCurrent = val == current
-                return(
-                    <button 
-                        data-current={isCurrent} 
-                        key={`${val}-idx`} 
-                        onClick={()=> setCurrent(val as Language)} 
-                        className="data-[current=true]:bg-blue-700 text-white hover:bg-neutral-800 p-2 cursor-pointer "
-                    >
-                        {val.toUpperCase()}
-                    </button>
-                )})}
-        </div>)
-};

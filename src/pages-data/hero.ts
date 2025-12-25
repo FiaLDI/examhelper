@@ -1,8 +1,7 @@
 // pages-data/hero.ts
+import { Language } from "@/features/language-switcher/model/types";
 
-import { Language } from "@/features/language-switcher/model/useLanguageStore";
-
-export const HeroData: Record<Language, {
+export type HeroDict = {
   title: string;
   subTitle: string;
   value: string;
@@ -10,7 +9,9 @@ export const HeroData: Record<Language, {
   ctaSkills: string;
   ctaPrimary: string;
   image: string;
-}> = {
+};
+
+export const HeroData: Record<Language, HeroDict> = {
   en: {
     title: "Leonid Stepanov",
     subTitle: "Full-Stack Software Engineer",

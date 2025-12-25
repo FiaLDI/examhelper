@@ -7,7 +7,7 @@ import { FullpageNav } from "./FullpageNav";
 import { FullpageProgress } from "./FullpageProgress";
 import { ReactNode } from "react";
 import { LanguageSwitcher } from "@/features/language-switcher/ui/LanguageSwitcher";
-import { AnimatedBackground } from "@/features/move-cloud/ui/AnimatedBackground";
+import { AnimatedBackground } from "@/features/animated-background/ui/AnimatedBackground";
 
 export function FullpageLayout({ sections }: { sections: ReactNode[] }) {
   const { index, setIndex, progress, projectsProgress } = useFullpage({
