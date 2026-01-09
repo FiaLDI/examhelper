@@ -1,5 +1,5 @@
 import { cookies, headers } from "next/headers";
-import { Language } from "@/features/language-switcher/model/types";
+import { Language } from "@/shared/lib/language";
 
 export async function getLang(): Promise<Language> {
   const cookieStore = await cookies();

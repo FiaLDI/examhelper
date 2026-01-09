@@ -1,5 +1,6 @@
 // pages-data/hero.ts
-import { Language } from "@/features/language-switcher/model/types";
+
+import { Language } from "@/shared/lib/language";
 
 export type HeroDict = {
   title: string;

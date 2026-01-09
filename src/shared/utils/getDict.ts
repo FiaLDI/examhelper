@@ -1,5 +1,5 @@
 import { dictionaries } from "@/pages-data";
-import { Language } from "@/features/language-switcher/model/types";
+import { Language } from "@/shared/lib/language";
 
 export function getDict<
   K extends keyof typeof dictionaries
