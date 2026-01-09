@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "prepare": "husky install"
   },
   "dependencies": {
     "framer-motion": "^12.23.25",
@@ -22,9 +23,20 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "babel-plugin-react-compiler": "1.0.0",
-    "eslint": "^9",
+    "eslint": "^9.39.2",
     "eslint-config-next": "16.0.6",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
+    "prettier": "^3.7.4",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "next lint --fix"
+    ],
+    "*.{json,css,scss,md}": [
+      "prettier --write"
+    ]
   }
 }
