@@ -1,15 +1,17 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
-import { TimelineDict, TimelineItem as TimelineItemComponent } from "@/entities/timeline";
+import { useRef, useState } from "react";
+import {
+  TimelineDict,
+  TimelineItem as TimelineItemComponent,
+} from "@/entities/timeline";
 import { useMounted } from "@/shared/utils/useMounted";
 import { useDict } from "@/shared/utils/useDict";
+import { useSlowScroll } from "@/shared/hooks/scroll";
 
 type TimeLineProps = {
   timelineDict: TimelineDict;
 };
-
-const SCROLL_SPEED = 0.2;
 
 export const TimeLine = ({ timelineDict }: TimeLineProps) => {
   const containerRef = useRef<HTMLElement>(null);
@@ -17,7 +19,7 @@ export const TimeLine = ({ timelineDict }: TimeLineProps) => {
   const mounted = useMounted();
 
   const clientDict = useDict("timeline");
-  const data : TimelineDict = mounted ? clientDict : timelineDict;
+  const data: TimelineDict = mounted ? clientDict : timelineDict;
 
   const total = data.items.length;
 
@@ -27,20 +29,7 @@ export const TimeLine = ({ timelineDict }: TimeLineProps) => {
       : 0;
 
   /* ---------- SLOW SCROLL ---------- */
-  useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
-
-    const onWheel = (e: WheelEvent) => {
-      e.preventDefault();
-
-      el.scrollTop += e.deltaY * SCROLL_SPEED;
-    };
-
-    el.addEventListener("wheel", onWheel, { passive: false });
-
-    return () => el.removeEventListener("wheel", onWheel);
-  }, []);
+  useSlowScroll(containerRef, { speed: 0.2 });
 
   return (
     <section

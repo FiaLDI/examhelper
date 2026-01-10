@@ -1,16 +1,7 @@
 // pages-data/hero.ts
 
 import { Language } from "@/shared/lib/language";
-
-export type HeroDict = {
-  title: string;
-  subTitle: string;
-  value: string;
-  highlights: string[];
-  ctaSkills: string;
-  ctaPrimary: string;
-  image: string;
-};
+import { HeroDict } from "../types/hero.type";
 
 export const HeroData: Record<Language, HeroDict> = {
   en: {

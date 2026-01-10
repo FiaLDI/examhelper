@@ -1,1 +1,2 @@
-export * from "./Component"
+export * from "./ui/Hero";
+export * from "./model/hero";

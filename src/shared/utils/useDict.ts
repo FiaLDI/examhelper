@@ -1,6 +1,6 @@
 "use client";
 
-import { dictionaries, DictionaryKey } from "@/pages-data";
+import { dictionaries, DictionaryKey } from "./Dictionaries";
 import { useLanguageStore } from "@/features/language-switcher/model/useLanguageStore";
 import { Language } from "@/shared/lib/language";
 

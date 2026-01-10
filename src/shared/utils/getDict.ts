@@ -1,4 +1,4 @@
-import { dictionaries } from "@/pages-data";
+import { dictionaries } from "./Dictionaries";
 import { Language } from "@/shared/lib/language";
 
 export function getDict<

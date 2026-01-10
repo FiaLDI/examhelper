@@ -11,8 +11,6 @@ import { ContactItem } from "@/entities/contact";
 
 const CONTACT_INDEX = 4;
 
-const EASE_OUT: [number, number, number, number] = [0.7, 1, 0.8, 1];
-
 const container: Variants = {
   hidden: {},
   visible: {
@@ -28,12 +26,13 @@ const item: Variants = {
   visible: {
     opacity: 1,
     x: 0,
-    transition: { duration: 1.2, ease: EASE_OUT },
+    transition: { duration: 1.2, ease: [0.7, 1, 0.8, 1] },
   },
 };
 
 export const Contacts = ({ contactsDict }: IComponentProps) => {
   const ctx = useContext(FullpageContext);
+  const clientDict = useDict("contacts");
   const mounted = useMounted();
 
   if (!ctx) return null;
@@ -41,7 +40,6 @@ export const Contacts = ({ contactsDict }: IComponentProps) => {
   const { index } = ctx;
   const isActive = index === CONTACT_INDEX;
 
-  const clientDict = useDict("contacts");
 
   const data = mounted ? clientDict : contactsDict;
 

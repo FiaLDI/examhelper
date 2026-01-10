@@ -7,43 +7,13 @@ import { FullpageContext } from "../lib";
 import { FullpageProgress } from "./FullpageProgress";
 import { LanguageSwitcher } from "@/features/language-switcher/ui/LanguageSwitcher";
 import { Component as AnimatedBackground } from "@/features/animated-background/ui";
+import { canScroll, getScrollableParent } from "@/shared/utils/scroll";
 
 /* ---------------- CONFIG ---------------- */
 
 const SWIPE_THRESHOLD = 80;
 const WHEEL_THRESHOLD = 35;
 const WHEEL_COOLDOWN_MS = 700;
-
-/* ---------------- HELPERS ---------------- */
-
-function getScrollableParent(
-  target: EventTarget | null
-): HTMLElement | null {
-  let el = target as HTMLElement | null;
-  while (el) {
-    if (el instanceof HTMLElement && el.hasAttribute("data-scrollable")) {
-      return el;
-    }
-    el = el.parentElement;
-  }
-  return null;
-}
-
-function canScroll(el: HTMLElement, delta: number) {
-  const { scrollTop, scrollHeight, clientHeight } = el;
-
-  if (scrollHeight <= clientHeight) return false;
-
-  if (delta > 0) {
-    return scrollTop + clientHeight < scrollHeight - 1;
-  }
-
-  if (delta < 0) {
-    return scrollTop > 0;
-  }
-
-  return false;
-}
 
 /* ---------------- COMPONENT ---------------- */
 

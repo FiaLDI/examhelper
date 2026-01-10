@@ -1,41 +1,20 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useMotionValue, useTransform } from "framer-motion";
-import { useEffect, useContext } from "react";
+import { motion } from "framer-motion";
+import { useContext } from "react";
 import { useMounted } from "@/shared/utils/useMounted";
-import { TypingText } from "@/shared/utils/TypingText";
 import { FullpageContext } from "@/features/custom-scroll/lib";
-import { HeroDict } from "@/pages-data/hero";
 import { useDict } from "@/shared/utils/useDict";
+import { HeroDict } from "../types/hero.type";
 
-type HeroProps = {
-  heroDict: HeroDict;
-};
-
-export const Hero = ({ heroDict }: HeroProps) => {
+export const Hero = ({ heroDict }: {heroDict: HeroDict;}) => {
   const mounted = useMounted();
   const { setIndex } = useContext(FullpageContext);
 
   const clientDict = useDict("hero");
 
-  const hero = mounted ? clientDict : heroDict;
-
-  /* ---------- PARALLAX ---------- */
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const imgX = useTransform(mouseX, (v) => v * 0.02);
-  const imgY = useTransform(mouseY, (v) => v * 0.02);
-
-  useEffect(() => {
-    const move = (e: MouseEvent) => {
-      mouseX.set(e.clientX - window.innerWidth / 2);
-      mouseY.set(e.clientY - window.innerHeight / 2);
-    };
-    window.addEventListener("mousemove", move);
-    return () => window.removeEventListener("mousemove", move);
-  }, [mouseX, mouseY]);
+  const hero: HeroDict = mounted ? clientDict : heroDict;
 
   return (
     <section className="h-screen max-w-7xl mx-auto w-full px-6">
@@ -96,8 +75,7 @@ export const Hero = ({ heroDict }: HeroProps) => {
         </div>
 
         {/* RIGHT */}
-        <motion.div
-          style={{ x: imgX, y: imgY }}
+        <div
           className="relative hidden md:block"
         >
           <div className="absolute -inset-12 rounded-full bg-indigo-500/20 blur-[140px]" />
@@ -108,7 +86,7 @@ export const Hero = ({ heroDict }: HeroProps) => {
             alt={hero.title}
             className="relative z-10 rounded-2xl border border-neutral-800 bg-neutral-900/40 backdrop-blur"
           />
-        </motion.div>
+        </div>
 
       </div>
     </section>
