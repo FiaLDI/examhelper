@@ -4,7 +4,7 @@ import { ProjectWidget, ProjectWidgetType } from "@/widgets/project-list";
 import { SkillsData, SkillsDict } from "@/widgets/skills";
 
 import { SkillsGroupData, SkillsGroupDict } from "@/entities/skill";
-import { ContactData, ContactDict } from "@/entities/contact";
+import { ContactData, ContactDict } from "@/widgets/contacts";
 import { ProjectsData, ProjectsDict } from "@/entities/project";
 import { TimelineData, TimelineDict } from "@/entities/timeline";
 

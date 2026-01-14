@@ -1,15 +1,10 @@
 "use client";
 
 import { motion, Variants } from "framer-motion";
-import { useContext } from "react";
-
-import { FullpageContext } from "@/features/custom-scroll/lib";
 import { useDict } from "@/shared/lib";
-import {
-  CONTACT_STATIC,
-} from "@/entities/contact";
 import { ContactItem } from "@/entities/contact";
 import { useInitAnimation } from "../model/useInitAnimation";
+import { CONTACT_STATIC } from "../model/data";
 
 /* ---------- ANIMATIONS ---------- */
 
