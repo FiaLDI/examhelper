@@ -1,10 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
-
 import { ProjectItem } from "@/entities/project";
 import { useDict } from "@/shared/lib";
 import { useProjectCategories } from "../model/useProjectCategories";
+import { ActiveCategory } from "@/shared/ui/animation";
 
 export const ProjectList = () => {
   const data = useDict("ProjectWidget");
@@ -30,23 +29,21 @@ export const ProjectList = () => {
         {data.title}
       </h2>
 
-      {/* CATEGORY RAIL */}
       <div className="fixed bottom-16 left-1/2 -translate-x-1/2 z-20
                       flex gap-4 bg-black/40 backdrop-blur-md
                       rounded-xl px-4 py-2">
         {categories.map((cat) => (
           <button
+            data-active={activeCategory === cat}
             key={cat}
             onClick={() =>
               document
                 .getElementById(`cat-${cat}`)
                 ?.scrollIntoView({ behavior: "smooth" })
             }
-            className={`text-sm transition ${
-              activeCategory === cat
-                ? "text-indigo-400"
-                : "text-neutral-400 hover:text-neutral-200"
-            }`}
+            className={
+              "text-sm transition text-neutral-400 hover:text-neutral-200 data-[active=true]:text-indigo-400"
+            }
           >
             {cat}
           </button>
@@ -55,24 +52,18 @@ export const ProjectList = () => {
 
       <div className="space-y-14 p-5 pb-20">
         {categories.map((category) => (
-          <motion.section
-            key={category}
-            id={`cat-${category}`}
-            onViewportEnter={() => setActiveCategory(category)}
-            viewport={{ margin: "-40%" }}
-            animate={{ opacity: activeCategory === category ? 1 : 0.35 }}
-            transition={{ duration: 0.4 }}
-            className="relative"
-          >
+          <ActiveCategory key={`project-category-${category}`} category={category} setActiveCategory={setActiveCategory} isActive={activeCategory === category} >
             <div
-              className={`-z-10 absolute -inset-10 rounded-3xl
-                          bg-gradient-to-br ${{
-                            Core: "from-indigo-500/20",
-                            Contribution: "from-sky-500/15",
-                            Pet: "from-emerald-500/10",
-                            Legacy: "from-neutral-500/5",
-                          }[category]}
-                          to-transparent blur-2xl`}
+              data-type={activeCategory}
+              className={`
+                -z-10 absolute -inset-10 rounded-3xl
+                bg-linear-to-br 
+                data-[type=Core]:from-indigo-500/20 
+                data-[type=Contribution]:from-sky-500/15
+                data-[type=Pet]:from-emerald-500/10
+                data-[type=Legacy]:from-neutral-500/5
+                to-transparent blur-2xl
+              `}
             />
 
             <div className="relative z-10 mb-8">
@@ -92,7 +83,7 @@ export const ProjectList = () => {
                 />
               ))}
             </div>
-          </motion.section>
+          </ActiveCategory>
         ))}
       </div>
     </section>

@@ -14,11 +14,12 @@ const container: Variants = {
 };
 
 export const OrderAnimation = ({children, isActive}: {children: ReactNode, isActive: boolean}) => (
-<motion.div
-    variants={container}
-    initial="hidden"
-    animate={isActive ? "visible" : "hidden"}
-    className="relative flex items-center justify-center h-full"
->
-{children}
-</motion.div>)
+  <motion.div
+      variants={container}
+      initial="hidden"
+      animate={isActive ? "visible" : "hidden"}
+      className="relative flex items-center justify-center h-full"
+  >
+  {children}
+  </motion.div>
+)
