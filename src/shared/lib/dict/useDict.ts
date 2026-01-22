@@ -2,7 +2,7 @@
 
 import { dictionaries, DictionaryKey } from "./dictionaries";
 import { useLanguageStore } from "@/features/language-switcher/model/useLanguageStore";
-import { Language } from "@/shared/lib/language";
+import { Language } from "./types";
 
 export function useDict<K extends DictionaryKey>(
   key: K

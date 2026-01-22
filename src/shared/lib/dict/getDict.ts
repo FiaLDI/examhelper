@@ -1,5 +1,5 @@
 import { dictionaries } from "./dictionaries";
-import { Language } from "@/shared/lib/language";
+import { Language } from "./types";
 
 export function getDict<
   K extends keyof typeof dictionaries

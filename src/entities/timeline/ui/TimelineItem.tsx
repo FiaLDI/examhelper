@@ -34,7 +34,6 @@ export function TimelineItem({
 
   return (
     <motion.li ref={ref} className="relative flex justify-center">
-      {/* DOT */}
       <motion.span
         className="absolute top-6 h-4 w-4 rounded-full"
         animate={{
@@ -47,7 +46,6 @@ export function TimelineItem({
         }}
       />
 
-      {/* CARD */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{

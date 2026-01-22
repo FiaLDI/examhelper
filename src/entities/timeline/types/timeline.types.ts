@@ -6,6 +6,5 @@ export interface TimelineItemType {
 }
 
 export type TimelineDict = {
-  title: string;
   items: TimelineItemType[];
 };

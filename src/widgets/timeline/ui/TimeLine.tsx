@@ -1,25 +1,21 @@
 "use client";
-
-import { useRef, useState } from "react";
-
 import {
   TimelineItem as TimelineItemComponent,
 } from "@/entities/timeline";
 import { useDict } from "@/shared/lib";
 import { useSlowScroll } from "@/shared/hooks/scroll";
+import { useTimeLineProgress } from "../model/useTimeLineProgress";
 
 export const TimeLine = () => {
-  const containerRef = useRef<HTMLElement>(null);
-  const [activeId, setActiveId] = useState<number | null>(null);
-
-  const data = useDict("timeline");
-
-  const total = data.items.length;
-
-  const progressPercent =
-    activeId !== null && total > 1
-      ? ((activeId - 1) / (total - 1)) * 100
-      : 0;
+  const data = useDict("timelineWidget");
+  const items = useDict("timeline");
+    
+  const {
+    containerRef, 
+    activeId,
+    setActiveId, 
+    progressPercent
+  } = useTimeLineProgress(items);
 
   useSlowScroll(containerRef, { speed: 0.2 });
 
@@ -39,7 +35,6 @@ export const TimeLine = () => {
       </h2>
 
       <div className="relative mt-16">
-        {/* CENTRAL LINE */}
         <div className="absolute left-1/2 top-0 -translate-x-1/2 h-full">
           <div className="absolute top-0 bottom-0 w-px bg-neutral-700/40" />
           <div
@@ -48,9 +43,8 @@ export const TimeLine = () => {
           />
         </div>
 
-        {/* CONTENT */}
         <ol className="relative space-y-24">
-          {data.items.map((item) => (
+          {items.items.map((item) => (
             <TimelineItemComponent
               key={item.id}
               {...item}

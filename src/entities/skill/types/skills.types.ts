@@ -12,8 +12,6 @@ export type SkillGroup = {
   items: SkillItemType[];
 };
 
-export type SkillsDict = {
-  title: string;
-  subtitle: string;
+export type SkillsGroupDict = {
   groups: SkillGroup[];
 };

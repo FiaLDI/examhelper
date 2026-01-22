@@ -1,3 +1,3 @@
-import { Language } from "@/shared/lib/language";
+export type Language = "en" | "ru";
 
 export type IDict<T> = Record<Language, T>;

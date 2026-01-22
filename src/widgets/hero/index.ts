@@ -1,3 +1,3 @@
 export * from "./ui/Hero";
-export * from "./model/hero";
+export * from "./model/data";
 export * from "./types/hero.type";

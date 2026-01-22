@@ -1,11 +1,10 @@
 "use client";
-import { motion, useScroll, useTransform } from "framer-motion";
+
 import { SkillItemType } from "../types/skills.types";
 
 export const SkillItem = ({item}: {item: SkillItemType}) => 
-    (
-        <>
-        <div key={item.capability} className="fl">
+(
+    <div key={item.capability} className="fl">
         <p className="text-base text-neutral-200">
             {item.capability}
         </p>
@@ -22,6 +21,5 @@ export const SkillItem = ({item}: {item: SkillItemType}) =>
             </span>
             ))}
         </div>
-        </div>
-        </>
-        )
+    </div>
+)

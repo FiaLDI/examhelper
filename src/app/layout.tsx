@@ -2,7 +2,7 @@ import { Roboto } from "next/font/google";
 import "./globals.css";
 
 import { LanguageInit } from "@/features/language-switcher/ui/LanguageInit";
-import { getLang } from "@/shared/utils/server/getLang";
+import { getLang } from "@/shared/server/getLang";
 import { ModalContainer } from "@/features/open-modal";
 
 const roboto = Roboto({

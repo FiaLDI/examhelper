@@ -11,7 +11,6 @@ export const ProjectItem = ({project}: {project: ProjectItemType}) =>
                     flex flex-col gap-3 border border-neutral-800
                     hover:border-neutral-700 transition"
     >
-      {/* Repo indicator */}
       <div className="absolute top-4 right-4">
         {project.link && !project.isPrivate && (
           <a
@@ -35,17 +34,14 @@ export const ProjectItem = ({project}: {project: ProjectItemType}) =>
         )}
       </div>
 
-      {/* Title */}
       <h4 className="text-xl font-semibold pr-8">
         {project.title}
       </h4>
 
-      {/* Description */}
       <p className="text-sm text-neutral-300">
         {project.description}
       </p>
 
-      {/* Tech */}
       <div className="flex flex-wrap gap-2 mt-1">
         {project.tech.map((t) => (
           <span

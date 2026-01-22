@@ -1,7 +1,7 @@
 "use client";
 
 import { useContext } from "react";
-import { FullpageContext } from "../lib";
+import { FullpageContext } from "../model";
 
 const SECTIONS = ["Home", "Skills", "Projects", "Timeline", "Contact"];
 

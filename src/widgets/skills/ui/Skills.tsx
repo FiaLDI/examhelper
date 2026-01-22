@@ -5,6 +5,7 @@ import { SkillGroup } from "./SkillGroup";
 
 export const Skills = () => {
   const data = useDict("skills");
+  const groups = useDict("skillsGroup");
 
   return (
     <section className="h-screen w-full">
@@ -28,7 +29,7 @@ export const Skills = () => {
         </div>
 
         <div className="space-y-10 relative z-10">
-          {data.groups.map((group, idx) => (
+          {groups.groups.map((group, idx) => (
             <SkillGroup
               key={`skills-${idx}-${group.description}`}
               group={group}

@@ -11,7 +11,6 @@ export interface ProjectItemType {
 }
 
 export type ProjectsDict = {
-  title: string;
   categoriesMeta: Record<ProjectCategory, string>;
   items: ProjectItemType[];
 };

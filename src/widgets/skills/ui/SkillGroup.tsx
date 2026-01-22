@@ -1,15 +1,10 @@
-import { motion } from "framer-motion";
 import { SkillGroup as SkillGroupType, SkillItem } from "@/entities/skill";
+import { ToTopLeaped } from "@/shared/ui/animation";
 
 export const SkillGroup = ({ group }: { group: SkillGroupType }) => {
   return (
-    <motion.section
+    <ToTopLeaped
         key={group.level}
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ margin: "-30%" }}
-        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className="relative"
     >
         {group.glow && (
         <div className="absolute -inset-12 rounded-3xl
@@ -27,6 +22,6 @@ export const SkillGroup = ({ group }: { group: SkillGroupType }) => {
         <div className=" p-6 border-l border-neutral-300">
             {group.items.map((item, idx) => <SkillItem key={`item-skills-${idx}`} item={item} />)}
         </div>
-    </motion.section>
+    </ToTopLeaped>
   );
 };
