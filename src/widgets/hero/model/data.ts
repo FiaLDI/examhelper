@@ -6,8 +6,7 @@ export const HeroData: Record<Language, HeroDict> = {
     title: "Leonid Stepanov",
     subTitle: "Full-Stack Developer",
     value:
-  "I develop and support web applications, implementing new features, integrating APIs, and fixing bugs. I have commercial development experience, working with both frontend and backend codebases, with a focus on clear structure and maintainability.",
-
+  "I develop full-stack web applications, working with both frontend and backend. I have commercial experience, integrate APIs, implement features, and maintain clean, structured code.",
     highlights: [
       "TypeScript · Next.js · NestJS · PostgreSQL",
       "Modular architecture · Clean code principles",
@@ -23,7 +22,7 @@ export const HeroData: Record<Language, HeroDict> = {
     title: "Леонид Степанов",
     subTitle: "Full-Stack разработчик",
     value:
-      "Занимаюсь разработкой и поддержкой веб-приложений: реализую новый функционал, интегрирую API и исправляю баги. Имею коммерческий опыт разработки, работаю как с клиентской, так и с серверной частью, уделяя внимание структуре и поддерживаемости.",
+      "Full-Stack разработчик с коммерческим опытом. Разрабатываю и поддерживаю веб-приложения, работаю с frontend и backend, внедряю новый функционал и слежу за качеством и структурой кода.",
     highlights: [
       "TypeScript · Next.js · NestJS · PostgreSQL",
       "Модульная архитектура · принципы чистого кода",
