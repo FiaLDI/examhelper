@@ -1,4 +1,3 @@
-
 import { Language } from "@/shared/lib";
 import { SkillsGroupDict } from "../types/skills.types";
 
@@ -6,47 +5,53 @@ export const SkillsGroupData: Record<Language, SkillsGroupDict> = {
   en: {
     groups: [
       {
-        level: "Primary Skills",
+        level: "Core Expertise",
         description:
-          "Areas I work with most often in commercial and personal projects.",
+          "Technologies I work with daily and rely on when delivering production-ready solutions.",
         glow: true,
         items: [
           {
-            capability: "Frontend development with modern frameworks",
-            stack: ["React", "Next.js", "TypeScript", "FSD"],
+            capability:
+              "Building scalable and maintainable frontend applications",
+            stack: ["React", "Next.js", "TypeScript", "Feature-Sliced Design"],
           },
           {
-            capability: "Backend development and API integration",
+            capability:
+              "Designing backend services and integrating APIs",
             stack: ["NestJS", "Node.js", "REST"],
           },
           {
-            capability: "State management and data fetching",
+            capability:
+              "Managing application state and server data",
             stack: ["Zustand", "React Query"],
           },
         ],
       },
       {
-        level: "Additional Tools",
+        level: "Supporting Tools",
         description:
-          "Technologies I regularly use to support development and improve reliability.",
+          "Tools and technologies that support development workflows, quality, and reliability.",
         items: [
           {
-            capability: "Database access and data modeling",
-            stack: ["Prisma", "PostgreSQL"],
+            capability:
+              "Working with databases and data modeling",
+            stack: ["PostgreSQL", "Prisma"],
           },
           {
-            capability: "Development tooling and workflows",
+            capability:
+              "Development tooling and automation",
             stack: ["Docker", "CI/CD", "ESLint", "Prettier"],
           },
         ],
       },
       {
-        level: "Exploring & Learning",
+        level: "Exploration & Growth",
         description:
-          "Technologies I have experience with through experimentation or side projects.",
+          "Technologies I explore through experiments and side projects to expand my skill set.",
         items: [
           {
-            capability: "Experimental and cross-platform tools",
+            capability:
+              "Experimental and cross-platform development",
             stack: ["Rust", "Tauri", "Unity", "WebRTC"],
           },
         ],
@@ -57,47 +62,53 @@ export const SkillsGroupData: Record<Language, SkillsGroupDict> = {
   ru: {
     groups: [
       {
-        level: "Основные навыки",
+        level: "Ключевая экспертиза",
         description:
-          "Области, с которыми я чаще всего работаю в коммерческих и личных проектах.",
+          "Технологии, с которыми я работаю ежедневно и использую при создании продакшен-решений.",
         glow: true,
         items: [
           {
-            capability: "Frontend-разработка на современных фреймворках",
-            stack: ["React", "Next.js", "TypeScript", "FSD"],
+            capability:
+              "Разработка масштабируемых и поддерживаемых frontend-приложений",
+            stack: ["React", "Next.js", "TypeScript", "Feature-Sliced Design"],
           },
           {
-            capability: "Backend-разработка и интеграция API",
+            capability:
+              "Проектирование серверной логики и интеграция API",
             stack: ["NestJS", "Node.js", "REST"],
           },
           {
-            capability: "Управление состоянием и загрузкой данных",
+            capability:
+              "Управление состоянием приложения и серверными данными",
             stack: ["Zustand", "React Query"],
           },
         ],
       },
       {
-        level: "Дополнительные инструменты",
+        level: "Инструменты и экосистема",
         description:
-          "Технологии, которые я регулярно использую для поддержки разработки и надёжности.",
+          "Инструменты и технологии, которые дополняют разработку и помогают поддерживать качество и надёжность.",
         items: [
           {
-            capability: "Работа с базами данных и моделями данных",
-            stack: ["Prisma", "PostgreSQL"],
+            capability:
+              "Работа с базами данных и моделирование данных",
+            stack: ["PostgreSQL", "Prisma", "Redis"],
           },
           {
-            capability: "Инструменты разработки и процессы",
+            capability:
+              "Инструменты разработки и автоматизация процессов",
             stack: ["Docker", "CI/CD", "ESLint", "Prettier"],
           },
         ],
       },
       {
-        level: "Изучаю и пробую",
+        level: "Изучение и развитие",
         description:
-          "Технологии, с которыми я работал в рамках экспериментов и pet-проектов.",
+          "Направления, которые я изучаю через эксперименты и pet-проекты.",
         items: [
           {
-            capability: "Экспериментальные и кроссплатформенные инструменты",
+            capability:
+              "Экспериментальная и кроссплатформенная разработка",
             stack: ["Rust", "Tauri", "Unity", "WebRTC"],
           },
         ],

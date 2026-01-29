@@ -5,12 +5,12 @@ export const SkillsData: Record<Language, SkillsDict> = {
   en: {
     title: "Skills",
     subtitle:
-      "An overview of the technologies and approaches I use in day-to-day development.",
+      "Technologies and practices I use to design, build, and maintain production web applications.",
   },
 
   ru: {
     title: "Навыки",
     subtitle:
-      "Обзор технологий и подходов, которые я использую в повседневной разработке.",
+      "Технологии и практики, которые я использую для проектирования, разработки и поддержки продакшен веб-приложений.",
   },
 };
