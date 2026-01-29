@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-roboto: var(--font-roboto-sans);
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -14,12 +20,7 @@ body {
 
 body {
   position: relative;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-roboto: var(--font-roboto-sans);
+  font-family: var(--font-roboto);
 }
 
 .background {
@@ -27,51 +28,6 @@ body {
   inset: 0;
   z-index: 0;
   background: #0b0f14;
-}
-
-.clouds {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.cloud {
-  position: absolute;
-  width: 900px;
-  height: 900px;
-  border-radius: 50%;
-  filter: blur(140px);
-  opacity: 0.45;
-}
-
-/* Холодный синий */
-.cloud-blue {
-  background: rgba(56, 189, 248, 0.15); /* sky-400 */
-  top: 5%;
-  left: 5%;
-}
-
-/* Приглушённый фиолетовый */
-.cloud-purple {
-  background: rgba(168, 85, 247, 0.2); /* violet-500 */
-  bottom: 10%;
-  right: 5%;
-}
-
-.background-image {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-
-  background-image: url("/images/bg.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  /* важные штуки */
-  transform: translateZ(0);
-  will-change: transform;
 }
 
 .no-scrollbar {
@@ -83,7 +39,6 @@ body {
   display: none; /* Chrome, Safari */
 }
 
-/* native scroll snap */
 .snap-y {
   scroll-snap-type: y mandatory;
 }

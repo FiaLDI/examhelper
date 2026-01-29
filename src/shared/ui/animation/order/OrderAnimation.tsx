@@ -18,7 +18,7 @@ export const OrderAnimation = ({children, isActive}: {children: ReactNode, isAct
       variants={container}
       initial="hidden"
       animate={isActive ? "visible" : "hidden"}
-      className="relative flex items-center justify-center h-full"
+      className="relative flex lg:min-w-[900px]"
   >
   {children}
   </motion.div>

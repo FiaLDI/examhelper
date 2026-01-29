@@ -30,14 +30,14 @@ export const TimeLine = () => {
       <div className="max-w-7xl mx-auto px-6 py-12 pb-32 text-white relative">
 
         {/* HEADER */}
-        <div className="mb-20 max-w-2xl">
+        <div className="mb-20 flex justify-center">
           <h2
-            className="text-4xl lg:text-5xl font-semibold tracking-tight"
+            className="text-4xl lg:text-5xl font-semibold tracking-tight w-fit text-center"
           >
             {data.title}
+            
+            <div className="h-0.5 w-[350px] mt-3 px-6 bg-indigo-500 shadow-[0_0_5px_0.5px_rgba(99,102,241,0.9)]"></div>
           </h2>
-
-          <div className="mt-4 h-px w-24 bg-indigo-500/60" />
         </div>
 
         {/* TIMELINE */}

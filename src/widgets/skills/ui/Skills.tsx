@@ -14,14 +14,16 @@ export const Skills = () => {
     >
       <div
         data-scrollable
-        className="relative w-full flex flex-col max-w-7xl mx-auto px-6 py-10 pb-40 gap-5 text-white lg:h-full lg:overscroll-contain lg:no-scrollbar"
+        className="relative w-full flex items-center justify-center flex-col max-w-7xl mx-auto px-6 py-10 pb-40 gap-5 text-white lg:h-full lg:overscroll-contain lg:no-scrollbar"
       >
         {/* HEADER */}
         <div className="max-w-2xl relative z-10">
           <h2
-            className="text-4xl lg:text-5xl font-semibold tracking-tight w-fit border-b border-indigo-500/60 pb-3"
+            className="text-4xl lg:text-5xl font-semibold tracking-tight w-fit text-center"
           >
             {data.title}
+            
+            <div className="h-0.5 w-[350px] mt-3 px-6 bg-indigo-500 shadow-[0_0_5px_0.5px_rgba(99,102,241,0.9)]"></div>
           </h2>
         </div>
 

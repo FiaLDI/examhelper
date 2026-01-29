@@ -15,7 +15,7 @@ export const Contacts = () => {
   const { isActive } = useInitAnimation();
 
   return (
-    <div id="contact" className="min-h-screen max-w-7xl mx-auto w-full px-6 py-16">
+    <div id="contact" className="min-h-screen max-w-7xl mx-auto w-full px-6 py-16 flex justify-center items-center">
       <OrderAnimation isActive={isActive}>
         <div className="absolute inset-0 flex justify-center items-center pointer-events-none">
           <div className="w-[700px] h-[700px] rounded-full bg-indigo-500/10 blur-[160px]" />

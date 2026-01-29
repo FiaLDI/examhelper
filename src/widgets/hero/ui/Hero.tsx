@@ -50,11 +50,11 @@ export const Hero = () => {
               ))}
             </div>
             <div className="flex gap-4 pt-4">
-              <PrimaryButton
+              <DefaultButton
                 title={hero.ctaPrimary}
                 handler={() => setIndex?.(2)}
               />
-              <DefaultButton
+              <PrimaryButton
                 title={hero.ctaSkills}
                 handler={() => setIndex?.(1)}
               />

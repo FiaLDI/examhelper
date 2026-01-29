@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { ReactNode } from "react";
 
 export const ToTopLeaped = ({children}: {children: ReactNode}) => ( 
-    <motion.section
+    <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ margin: "-5%" }}
@@ -10,5 +10,5 @@ export const ToTopLeaped = ({children}: {children: ReactNode}) => (
         className="relative"
     >
         {children}
-    </motion.section>
+    </motion.div>
 )
