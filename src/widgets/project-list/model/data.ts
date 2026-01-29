@@ -4,10 +4,10 @@ import { ProjectWidgetType } from "../types/project.types";
 
 export const ProjectWidget: Record<Language, ProjectWidgetType> = {
   en: {
-    title: "Timeline",
+    title: "Projects",
   },
 
   ru: {
-    title: "Хронология",
+    title: "Проекты",
   },
 };

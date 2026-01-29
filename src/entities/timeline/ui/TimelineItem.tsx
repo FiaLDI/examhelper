@@ -33,54 +33,114 @@ export function TimelineItem({
   const isLeft = id % 2 === 0;
 
   return (
-    <motion.li ref={ref} className="relative flex justify-center">
+    <motion.li
+      ref={ref}
+      className="relative flex justify-center"
+    >
+      {/* CENTER DOT */}
       <motion.span
-        className="absolute top-6 h-4 w-4 rounded-full"
+        className="
+          absolute top-7
+          h-3 w-3 rounded-full
+        "
         animate={{
           backgroundColor: isCompleted ? "#6366f1" : "#525252",
           boxShadow: isActive
-            ? "0 0 0 6px rgba(129,140,248,0.4)"
+            ? "0 0 0 6px rgba(99,102,241,0.35)"
             : isCompleted
-            ? "0 0 0 4px rgba(129,140,248,0.25)"
+            ? "0 0 0 4px rgba(99,102,241,0.2)"
             : "none",
         }}
+        transition={{ duration: 0.3 }}
       />
 
+      {/* CARD */}
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 24 }}
         animate={{
-          opacity: isCompleted ? 1 : 0.35,
-          scale: isActive ? 1 : 0.96,
+          opacity: isCompleted ? 1 : 0.4,
+          scale: isActive ? 1 : 0.97,
         }}
-        transition={{ duration: 0.4 }}
-        className={`relative max-w-md rounded-xl border p-5 ${
-          isLeft ? "mr-auto ml-16" : "ml-auto mr-16"
-        } ${
-          isCompleted
-            ? "border-indigo-400/40 bg-neutral-900/70"
-            : "border-neutral-700 bg-neutral-900/40"
-        }`}
+        transition={{ duration: 0.35, ease: "easeOut" }}
+        className={`
+          relative
+          max-w-md
+          rounded-xl
+          border
+          p-6
+          ${
+            isLeft
+              ? "mr-auto ml-16"
+              : "ml-auto mr-16"
+          }
+          ${
+            isCompleted
+              ? "border-indigo-500/30 bg-neutral-900/70"
+              : "border-neutral-800 bg-neutral-900/40"
+          }
+        `}
       >
+        {/* ACTIVE GLOW */}
         {isActive && (
-          <div className="absolute -inset-6 rounded-2xl bg-indigo-500/10 blur-xl -z-10" />
+          <div
+            className="
+              absolute -inset-6
+              rounded-2xl
+              bg-indigo-500/10
+              blur-xl
+              -z-10
+            "
+          />
         )}
 
-        <div className="text-xs uppercase tracking-wide text-neutral-400 mb-1">
-          Этап {id}
+        {/* META */}
+        <div
+          className="
+            text-xs
+            uppercase
+            tracking-widest
+            text-neutral-500
+            mb-2
+          "
+        >
+          Stage {id}
         </div>
 
-        <h3 className="text-lg font-semibold text-neutral-100">
+        {/* TITLE */}
+        <h3
+          className="
+            text-lg
+            font-medium
+            tracking-tight
+            text-neutral-100
+          "
+        >
           {title}
         </h3>
 
+        {/* SUBTITLE */}
         {subtitle && (
-          <p className="text-sm text-neutral-300 mt-1">
+          <p
+            className="
+              mt-1
+              text-sm
+              text-neutral-300
+            "
+          >
             {subtitle}
           </p>
         )}
 
+        {/* DESCRIPTION */}
         {description && (
-          <p className="text-sm text-neutral-400 mt-2">
+          <p
+            className="
+              mt-3
+              text-sm
+              leading-relaxed
+              text-neutral-400
+            "
+          >
             {description}
           </p>
         )}

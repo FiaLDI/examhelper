@@ -22,69 +22,109 @@ export const ProjectList = () => {
       ref={containerRef}
       data-scrollable
       style={{ WebkitOverflowScrolling: "touch" }}
-      className="h-screen no-scrollbar relative overflow-y-auto
-                 max-w-7xl mx-auto w-full p-5 pt-15 text-white"
+      className="
+        h-screen w-full
+        overflow-y-auto no-scrollbar
+      "
     >
-      <h2 className="text-3xl font-bold p-5">
-        {data.title}
-      </h2>
+      <div className="max-w-7xl mx-auto px-6 py-12 text-white relative">
 
-      <div className="fixed bottom-16 left-1/2 -translate-x-1/2 z-20
-                      flex gap-4 bg-black/40 backdrop-blur-md
-                      rounded-xl px-4 py-2">
-        {categories.map((cat) => (
-          <button
-            data-active={activeCategory === cat}
-            key={cat}
-            onClick={() =>
-              document
-                .getElementById(`cat-${cat}`)
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
-            className={
-              "text-sm transition text-neutral-400 hover:text-neutral-200 data-[active=true]:text-indigo-400"
-            }
+        {/* HEADER */}
+        <div className="mb-16 max-w-2xl">
+          <h2
+            className="
+              text-4xl lg:text-5xl
+              font-semibold
+              tracking-tight
+            "
           >
-            {cat}
-          </button>
-        ))}
-      </div>
+            {data.title}
+          </h2>
 
-      <div className="space-y-14 p-5 pb-20">
-        {categories.map((category) => (
-          <ActiveCategory key={`project-category-${category}`} category={category} setActiveCategory={setActiveCategory} isActive={activeCategory === category} >
-            <div
-              data-type={activeCategory}
-              className={`
-                -z-10 absolute -inset-10 rounded-3xl
-                bg-linear-to-br 
-                data-[type=Core]:from-indigo-500/20 
-                data-[type=Contribution]:from-sky-500/15
-                data-[type=Pet]:from-emerald-500/10
-                data-[type=Legacy]:from-neutral-500/5
-                to-transparent blur-2xl
-              `}
-            />
+          <div className="mt-4 h-px w-24 bg-indigo-500/60" />
+        </div>
 
-            <div className="relative z-10 mb-8">
-              <h3 className="text-2xl font-semibold mb-2">
-                {category}
-              </h3>
-              <p className="text-sm text-neutral-400 max-w-3xl">
-                {items.categoriesMeta[category]}
-              </p>
-            </div>
+        {/* CATEGORY NAV */}
+        <div
+          className="
+            fixed bottom-16 left-1/2 -translate-x-1/2 z-30
+            flex gap-1
+            rounded-full
+            bg-neutral-900/70 backdrop-blur
+            border border-neutral-800
+            px-2 py-2
+          "
+        >
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              data-active={activeCategory === cat}
+              onClick={() =>
+                document
+                  .getElementById(`cat-${cat}`)
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
+              className="
+                px-3 py-1.5
+                text-xs
+                rounded-full
+                transition-colors
+                text-neutral-400
+                hover:text-neutral-200
+                data-[active=true]:bg-neutral-800
+                data-[active=true]:text-indigo-400
+              "
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
-              {grouped[category].map((project) => (
-                <ProjectItem
-                  key={`project-${project.id}`}
-                  project={project}
-                />
-              ))}
-            </div>
-          </ActiveCategory>
-        ))}
+        {/* CONTENT */}
+        <div className="space-y-24 pb-32">
+          {categories.map((category) => (
+            <ActiveCategory
+              key={`project-category-${category}`}
+              category={category}
+              setActiveCategory={setActiveCategory}
+              isActive={activeCategory === category}
+            >
+              {/* CATEGORY HEADER */}
+              <div className="relative z-10 mb-10 max-w-3xl">
+                <h3
+                  className="
+                    text-2xl
+                    font-medium
+                    tracking-tight
+                    mb-2
+                  "
+                >
+                  {category}
+                </h3>
+
+                <p
+                  className="
+                    text-sm
+                    text-neutral-400
+                    leading-relaxed
+                  "
+                >
+                  {items.categoriesMeta[category]}
+                </p>
+              </div>
+
+              {/* PROJECTS GRID */}
+              <div className="grid gap-6 md:grid-cols-2">
+                {grouped[category].map((project) => (
+                  <ProjectItem
+                    key={`project-${project.id}`}
+                    project={project}
+                  />
+                ))}
+              </div>
+            </ActiveCategory>
+          ))}
+        </div>
       </div>
     </section>
   );
