@@ -1,36 +1,98 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Resume Platform
 
-## Getting Started
+![Next.js](https://img.shields.io/badge/Next.js-000000?logo=nextdotjs&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
+![Feature--Sliced Design](https://img.shields.io/badge/FSD-Feature--Sliced%20Design-6B7280)
 
-First, run the development server:
+**TL;DR**  
+Personal resume website and scalable platform built with Next.js, clean architecture, and Feature-Sliced Design.  
+Serves both as a **live resume** and as a **foundation for future projects**.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+**TL;DR**  
+Сайт-резюме и масштабируемая платформа на Next.js с чистой архитектурой и Feature-Sliced Design.  
+Используется как **живое резюме** и как **основа для будущих проектов**.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Live Demo
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+https://resume-nine-kappa-73.vercel.app/
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Language / Язык
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [English](#english)
+- [Русский](#русский)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+# English
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Overview
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is both a **personal resume website** and a **technical platform**.
+
+It demonstrates architectural decisions, modern frontend practices, and a real-world scalable project structure.  
+The platform is designed to evolve into independent products while keeping the same stack and principles.
+
+## Key Features
+
+- Feature-Sliced Design (FSD)
+- Multi-language support (EN / RU)
+- Server-Side Rendering (SSR)
+- State management with Zustand
+- Full-page navigation and smooth transitions
+- Adaptive animated background
+
+## Tech Stack
+
+- Next.js
+- TypeScript
+- Feature-Sliced Design
+- Zustand
+- TailwindCSS
+- Framer Motion
+
+## Related Projects
+
+- Exam Helper — https://github.com/FiaLDI/Exam-helper
+
+---
+
+# Русский
+
+## Обзор
+
+Проект является **сайтом-резюме** и одновременно **технической платформой**.
+
+Он демонстрирует архитектурные решения, современные frontend-подходы и структуру масштабируемого проекта.  
+Платформа спроектирована с расчётом на развитие в отдельные продукты с сохранением стека и принципов.
+
+## Ключевые возможности
+
+- Feature-Sliced Design (FSD)
+- Поддержка языков (RU / EN)
+- Server-Side Rendering (SSR)
+- Управление состоянием на Zustand
+- Полноэкранная навигация и плавные переходы
+- Адаптивный анимированный фон
+
+## Технологический стек
+
+- Next.js
+- TypeScript
+- Feature-Sliced Design
+- Zustand
+- TailwindCSS
+- Framer Motion
+
+## Связанные проекты
+
+- Exam Helper — https://github.com/FiaLDI/Exam-helper
+
+---
+
+## License
+
+MIT
