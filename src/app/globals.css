@@ -6,9 +6,34 @@
   --font-roboto: var(--font-roboto-sans);
 }
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@layer base {
+  :root {
+    --background: 255 255 255;
+    --foreground: 34 34 34;
+    --color-primary: 49 130 206;
+    --color-primary-foreground: 255 255 255;
+    --bg: url("/img/backgroundbigblack.jpg");
+    --bg2: url("/img/backgroundbig.jpg");
+  }
+  html[data-theme="standart"] {
+    --background: 3 37 99;
+    --foreground: 0 66 189;
+    --color-primary: 255 255 255;
+    --color-primary-foreground: 255 255 255;
+  }
+
+  html[data-theme="light"] {
+    --background: 100 173 236;
+    --foreground: 50 149 236;
+    --color-primary: 255 255 255;
+    --color-primary-foreground: 0 0 10;
+  }
+  html[data-theme="dark"] {
+    --background: 28 28 40;
+    --foreground: 53 53 59;
+    --color-primary: 255 255 255;
+    --color-primary-foreground: 255 255 255;
+  }
 }
 
 html,

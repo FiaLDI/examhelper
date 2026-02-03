@@ -12,6 +12,7 @@ import { LanguageSwitcher } from "@/features/language-switcher/ui/LanguageSwitch
 import { AnimatedBackground } from "@/features/animated-background/ui";
 
 import { usePlatform } from "@/shared/lib/platform";
+import { ThemeSwitcher, useThemeApply } from "@/features/theme-switcher";
 
 export function FullpageLayout({
   sections,
@@ -44,6 +45,8 @@ export function FullpageLayout({
     }
   };
 
+  useThemeApply();
+
   return (
     <FullpageContext.Provider
       value={{
@@ -68,6 +71,9 @@ export function FullpageLayout({
             <div className="pointer-events-auto">
               <LanguageSwitcher />
             </div>
+            <div className="pointer-events-auto">
+              <ThemeSwitcher /> 
+            </div>
           </div>
           <div className="h-screen overflow-y-auto overflow-x-hidden">
             {sections.map((section, i) => (
@@ -89,6 +95,7 @@ export function FullpageLayout({
         <div className="w-full h-screen overflow-hidden relative z-10">
           <FullpageProgress />
           <LanguageSwitcher />
+          <ThemeSwitcher /> 
 
           <AnimatePresence mode="wait">
             <motion.div
