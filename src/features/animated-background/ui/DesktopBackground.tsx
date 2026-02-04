@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, MotionValue } from "framer-motion";
-import { Theme } from "../model/background.config";
+import { glowVar, Theme } from "../model/background.config";
 
 interface DesktopBackgroundProps {
   index: number;
@@ -21,12 +21,17 @@ export function DesktopBackground({
   projectsGlow,
   projectsScale,
 }: DesktopBackgroundProps) {
+  const glow = glowVar(theme.glow);
+
   return (
     <motion.div
       className="fixed inset-0 -z-10 overflow-hidden"
-      animate={{ backgroundColor: theme.base }}
+      animate={{
+        backgroundColor: "rgb(var(--background))",
+      }}
       transition={{ duration: 0.8, ease: "easeInOut" }}
     >
+
       {/* radial gradient */}
       <motion.div
         className="absolute inset-0"
@@ -34,7 +39,7 @@ export function DesktopBackground({
           background: `
             radial-gradient(
               800px at ${50 + index * 5}% ${30 + index * 8}%,
-              ${theme.accent},
+              ${glow},
               transparent 60%
             )
           `,
@@ -46,11 +51,10 @@ export function DesktopBackground({
       <motion.div
         className="absolute w-[700px] h-[700px] rounded-full blur-[120px]"
         style={{
-          background: theme.accent,
+          background: glow,
           scale,
           opacity,
           willChange: "transform",
-          transform: "translateZ(0)",
         }}
         animate={{
           x: index * 60 - 200,
@@ -62,11 +66,7 @@ export function DesktopBackground({
       {/* corner glow */}
       <motion.div
         className="absolute right-[-300px] bottom-[-300px] w-[600px] h-[600px] rounded-full blur-[140px]"
-        style={{
-          background: theme.accent,
-          willChange: "transform",
-          transform: "translateZ(0)",
-        }}
+        style={{ background: glow }}
         animate={{
           x: -index * 50,
           y: -index * 30,
@@ -78,11 +78,10 @@ export function DesktopBackground({
       <motion.div
         className="absolute w-[700px] h-[700px] rounded-full blur-[140px]"
         style={{
-          background: theme.accent,
+          background: glow,
           opacity: projectsGlow,
           scale: projectsScale,
           willChange: "transform",
-          transform: "translateZ(0)",
         }}
       />
 
