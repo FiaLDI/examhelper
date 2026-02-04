@@ -1,12 +1,14 @@
 "use client";
 
-import type { Theme } from "../model/background.config";
+import { glowVar, type Theme } from "../model/background.config";
 
 interface Props {
   theme: Theme;
 }
 
-export const IOSBackground = ({ theme }: Props) => {
+export const IOSBackground = ({ base, glow }: Theme) => {
+  const glowC = glowVar(glow);
+
   return (
     <div
       className="absolute inset-0 -z-10"
@@ -14,8 +16,8 @@ export const IOSBackground = ({ theme }: Props) => {
         background: `
           radial-gradient(
             420px at 50% 25%,
-            ${theme.accent},
-            ${theme.base} 70%
+            ${glowC},
+            ${base} 70%
           )
         `,
       }}

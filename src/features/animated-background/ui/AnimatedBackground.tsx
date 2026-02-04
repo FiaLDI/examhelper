@@ -39,15 +39,15 @@ export function AnimatedBackground({
    * ВСЕГДА одинаковый
    */
   if (!mounted) {
-    return <IOSBackground theme={theme} />;
+    return <IOSBackground base={theme.base} glow={theme.glow}/>;
   }
 
   if (isIOS || prefersReducedMotion) {
-    return <IOSBackground theme={theme} />;
+    return <IOSBackground base={theme.base} glow={theme.glow}/>;
   }
 
   if (isMobile) {
-    return <MobileBackground theme={theme} />;
+    return <MobileBackground base={theme.base} glow={theme.glow}/>;
   }
 
   return (

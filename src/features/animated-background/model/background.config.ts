@@ -1,11 +1,22 @@
+export type GlowClass =
+  | "glow-1"
+  | "glow-2"
+  | "glow-3"
+  | "glow-4"
+  | "glow-5";
+
 export interface Theme {
-    base: string, accent: string;
+  base: string;
+  glow: GlowClass;
 }
 
-export const THEMES = [
-  { base: "#020617", accent: "rgba(99,102,241,0.35)" },
-  { base: "#020617", accent: "rgba(168,85,247,0.35)" },
-  { base: "#020617", accent: "rgba(14,165,233,0.35)" },
-  { base: "#020617", accent: "rgba(236,72,153,0.35)" },
-  { base: "#020617", accent: "rgba(34,197,94,0.35)" },
+export const THEMES: Theme[] = [
+  { base: "#020617", glow: "glow-1" },
+  { base: "#020617", glow: "glow-2" },
+  { base: "#020617", glow: "glow-3" },
+  { base: "#020617", glow: "glow-4" },
+  { base: "#020617", glow: "glow-5" },
 ];
+
+export const glowVar = (id: GlowClass) =>
+  `rgb(var(--${id}) / var(--glow-alpha))`;
