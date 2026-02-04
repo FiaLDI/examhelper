@@ -14,5 +14,5 @@ export async function getTheme(): Promise<Theme> {
     return accept as Theme;
   }
 
-  return "standart";
+  return "dark";
 }
