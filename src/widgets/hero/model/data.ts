@@ -3,34 +3,38 @@ import { HeroDict } from "../types/hero.type";
 
 export const HeroData: Record<Language, HeroDict> = {
   en: {
-    title: "Leonid Stepanov",
-    subTitle: "Full-Stack Developer",
+    title: "Exam Helper",
+    subTitle: "Web-application",
     value:
-  "I develop full-stack web applications, working with both frontend and backend. I have commercial experience, integrate APIs, implement features, and maintain clean, structured code.",
+  "Exam Helper is a web application designed for exam preparation by storing, searching, and sharing exam questions and answers.",
     highlights: [
-      "TypeScript · Next.js · NestJS · PostgreSQL",
-      "Modular architecture · Clean code principles",
-      "REST APIs · Real-time basics",
-      "Docker · Performance fundamentals",
-    ],
-    ctaSkills: "Skills",
-    ctaPrimary: "Projects",
+    "Context-aware search",
+    "Convenient data input",
+    "Local mode",
+    "Remote connectivity",
+    "Privacy",
+    "Publishing capability"
+  ],
+    ctaSkills: "Guide",
+    ctaPrimary: "Get Started",
     image: "/images/leonid.jpg",
   },
 
   ru: {
-    title: "Леонид Степанов",
-    subTitle: "Full-Stack разработчик",
+    title: "Exam Helper",
+    subTitle: "Web-application",
     value:
-      "Full-Stack разработчик с коммерческим опытом. Разрабатываю и поддерживаю веб-приложения, работаю с frontend и backend, внедряю новый функционал и слежу за качеством и структурой кода.",
+      "Exam Helper — веб-приложение для подготовки к экзаменам, предназначенное для хранения, поиска и обмена экзаменационными вопросами и ответами.",
     highlights: [
-      "TypeScript · Next.js · NestJS · PostgreSQL",
-      "Модульная архитектура · принципы чистого кода",
-      "REST API · основы real-time",
-      "Docker · основы производительности",
+      "Контекстный поиск",
+      "Удобный ввод данных",
+      "Локальный режим",
+      "Удалённое подключение",
+      "Приватность",
+      "Возможность опубликовать"
     ],
-    ctaSkills: "Навыки",
-    ctaPrimary: "Проекты",
+    ctaSkills: "Документация",
+    ctaPrimary: "Начать работать",
     image: "/images/leonid.jpg",
   },
 };

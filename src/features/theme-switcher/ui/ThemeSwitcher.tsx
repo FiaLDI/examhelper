@@ -4,10 +4,12 @@ import { allTheme } from "@/shared/lib/theme";
 import { useThemeStore } from "../model/useThemeStore";
 import { useState } from "react";
 import { SquareArrowDown, SquareArrowUp } from "lucide-react";
+import { useThemeApply } from "../model/useThemeApply";
 
 export function ThemeSwitcher() {
   const { theme, setTheme } = useThemeStore();
   const [ open, setOpen ] = useState<boolean>(false);
+  useThemeApply();
 
   return (
     <div 
