@@ -1,14 +1,14 @@
-import { Control } from "@/widgets/control";
+
+import { ExamList } from "@/widgets/examlist";
 import { Header } from "@/widgets/header";
-import { Hero } from "@/widgets/hero";
 
 export default async function Page() {
+    
 
   return (
     <>
     <Header />
-    <Hero />
-    <Control />
+    <ExamList />
     </>
   );
 }
