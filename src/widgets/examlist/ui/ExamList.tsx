@@ -5,6 +5,7 @@ import { useExamStore } from "@/entities/exam/model/store";
 import { ExamForm } from "@/features/exam-update";
 import { useModal } from "@/features/open-modal";
 import { Grid2x2, Plus, Rows2 } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export type View = "block" | "list" 
@@ -15,6 +16,7 @@ export const ExamList = () => {
 
     const { exam, addExam, removeExam, editExam, startExam } = useExamStore();
     const { openModal, closeModal }= useModal();
+    const router = useRouter();
 
     useEffect(() => {
         startExam();
@@ -58,6 +60,9 @@ export const ExamList = () => {
                                 />), 
                             "Изменение экзамена")
                         }} 
+                        link={()=>{
+                            router.push(`exam/${val.id}`)
+                        }}
                     />
                 )}
             </div>

@@ -1,5 +1,6 @@
 import { ExamShow } from "@/widgets/examshow";
 import { Header } from "@/widgets/header";
+import { QuestionList } from "@/widgets/questionlist";
 
 export default async function Page({
   params,
@@ -12,6 +13,7 @@ export default async function Page({
     <>
       <Header />
       <ExamShow id={id} />
+      <QuestionList id={id} />
     </>
   );
 }

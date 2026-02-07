@@ -6,6 +6,7 @@ type ExamCardProps = {
   number?: string;
   remove?: () => void;
   edit?: () => void;
+  link?: () => void;
 };
 
 export const ExamCard = ({
@@ -14,6 +15,7 @@ export const ExamCard = ({
   number = "40",
   remove,
   edit,
+  link
 }: ExamCardProps) => {
   return (
     <div className="relative border-2 border-indigo-400 p-3 flex flex-col justify-between gap-3 min-w-0">
@@ -26,14 +28,19 @@ export const ExamCard = ({
           {title}
         </h3>
 
-        <p className="text-sm text-neutral-400 whitespace-normal break-words">
+        <p className="text-sm text-neutral-400 whitespace-normal wrap-break-word">
           {description}
         </p>
       </div>
 
       {/* Footer */}
       <div className="flex items-center justify-between gap-3 pt-2">
-        <button className="text-sm hover:text-indigo-400 transition-colors">
+        <button 
+          className="text-sm hover:text-indigo-400 transition-colors cursor-pointer"
+          onClick={() => {
+            if(link) link();
+          }}
+        >
           Подробнее
         </button>
 
@@ -45,7 +52,7 @@ export const ExamCard = ({
           {remove && (
             <button
               onClick={remove}
-              className="hover:text-red-400 transition-colors"
+              className="hover:text-red-400 transition-colors cursor-pointer"
               aria-label="Удалить экзамен"
             >
               <Trash size={18} />
@@ -55,7 +62,7 @@ export const ExamCard = ({
           {edit && (
             <button
               onClick={edit}
-              className="hover:text-indigo-400 transition-colors"
+              className="hover:text-indigo-400 transition-colors cursor-pointer"
               aria-label="Редактировать экзамен"
             >
               <Pencil size={18} />

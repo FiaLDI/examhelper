@@ -2,13 +2,7 @@
 
 import { create } from "zustand";
 import { EXAM_SEED } from "./seed";
-
-export interface Exam {
-  id: string;
-  title: string;
-  description: string;
-  number: string;
-}
+import { Exam } from "../types/exam.types";
 
 type ExamStore = {
   exam: Exam[];
