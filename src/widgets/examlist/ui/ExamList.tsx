@@ -1,9 +1,8 @@
 "use client";
 
-import { EXAM_SEED, ExamCard } from "@/entities/exam";
+import { ExamCard } from "@/entities/exam";
 import { useExamStore } from "@/entities/exam/model/store";
-import { CreateExamForm } from "@/features/exam/create";
-import { EditExamForm } from "@/features/exam/edit";
+import { ExamForm } from "@/features/exam-update";
 import { useModal } from "@/features/open-modal";
 import { Grid2x2, Plus, Rows2 } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -27,7 +26,7 @@ export const ExamList = () => {
                 <div className=" flex w-full items-center gap-5">
                     <h2 className="text-2xl ">Список экзаменов </h2> 
                     <div className="flex h-fit">
-                        <button onClick={()=> {openModal((<CreateExamForm create={addExam} close={closeModal} />), "Создание экзамена")}}>
+                        <button onClick={()=> {openModal((<ExamForm func={addExam} close={closeModal} />), "Создание экзамена")}}>
                             <Plus />
                         </button>
                     </div>
@@ -52,8 +51,8 @@ export const ExamList = () => {
                         } 
                         edit={()=> {
                             openModal((
-                                <EditExamForm 
-                                    edit={editExam} 
+                                <ExamForm 
+                                    func={editExam} 
                                     close={closeModal} 
                                     base={val} 
                                 />), 

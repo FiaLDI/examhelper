@@ -1,15 +1,17 @@
 import { ExamShow } from "@/widgets/examshow";
 import { Header } from "@/widgets/header";
 
-export default function Page({
+export default async function Page({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
+  const { id } = await params;
+
   return (
     <>
       <Header />
-      <ExamShow id={params.id} />
+      <ExamShow id={id} />
     </>
   );
 }

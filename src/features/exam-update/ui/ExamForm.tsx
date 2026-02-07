@@ -1,14 +1,24 @@
 import { Exam } from "@/entities/exam"
+import { generateUUID } from "@/shared/lib/uuid/uuid";
 import { DefaultButton } from "@/shared/ui/button"
 import { useState } from "react"
 
-export const EditExamForm = ({base, edit, close}: {base: Exam, edit: (exam: Exam) => boolean; close: ()=>void}) => {
+export const ExamForm = ({
+    base, 
+    func, 
+    close
+}: {base?: Exam, func: (exam: Exam) => boolean; close: ()=>void}) => {
     const [data, setData] = useState<Exam>({
-        id: base.id, 
-        title: base.description, 
-        description: base.description, 
-        number: base.number
+        id: base ? base.id : generateUUID(), 
+        title: base ? base.title : "", 
+        description: base ? base.description : "", 
+        number: base ? base.number : "0"
     });
+
+    const submit = () => {
+        func(data);
+        close();
+    }
 
     return (
         <div className="flex flex-col lg:w-[450px] p-3 items-center gap-7">
@@ -39,7 +49,7 @@ export const EditExamForm = ({base, edit, close}: {base: Exam, edit: (exam: Exam
                 />
             </div>
             
-            <DefaultButton title="Create" handler={() => {edit(data); close()}} />
+            <DefaultButton title="Create" handler={submit} />
         </div>
     )
 }
