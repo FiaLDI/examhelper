@@ -2,6 +2,7 @@
 
 import { ExamCard } from "@/entities/exam";
 import { useExamStore } from "@/entities/exam/model/store";
+import { useQuestionStore } from "@/entities/question";
 import { ExamForm } from "@/features/exam-update";
 import { useModal } from "@/features/open-modal";
 import { Grid2x2, Plus, Rows2 } from "lucide-react";
@@ -15,11 +16,14 @@ export const ExamList = () => {
     const [view, setView] = useState<View>("block");
 
     const { exam, addExam, removeExam, editExam, startExam } = useExamStore();
+    const { startQuestions } = useQuestionStore();
+        
     const { openModal, closeModal }= useModal();
     const router = useRouter();
 
     useEffect(() => {
         startExam();
+        startQuestions();
     }, []);
 
     return (
