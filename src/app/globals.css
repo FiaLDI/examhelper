@@ -71,15 +71,7 @@ body {
 }
 
 body {
-  position: relative;
   font-family: var(--font-roboto);
-}
-
-.background {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  background: #0b0f14;
 }
 
 .no-scrollbar {

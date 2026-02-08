@@ -1,3 +1,5 @@
+"use client";
+
 import { useModalStore } from "./modalStore";
 
 export function useModal() {

@@ -79,24 +79,9 @@ export const Hero = () => {
                   hidden: { opacity: 0, y: 10 },
                   visible: { opacity: 1, y: 0 },
                 }}
-                className="
-                  group flex items-center gap-3
-                  rounded-2xl border border-neutral-800
-                  bg-linear-to-br from-neutral-900/60 to-neutral-950/30
-                  px-4 py-3 text-sm text-neutral-300
-                  transition-all duration-300
-                  hover:-translate-y-0.5
-                  hover:border-indigo-500/50
-                  hover:bg-neutral-900
-                "
-              >
+                className="group flex items-center gap-3 rounded-2xl border border-neutral-800 bg-linear-to-br from-neutral-900/60 to-neutral-950/30 px-4 py-3 text-sm text-neutral-300 transition-all duration-300 hover:-translate-y-0.5 hover:border-indigo-500/50 hover:bg-neutral-900">
                 <span
-                  className="
-                    flex h-8 w-8 items-center justify-center
-                    rounded-md bg-indigo-500/10 text-indigo-400
-                    transition-colors
-                    group-hover:bg-indigo-500/20
-                  "
+                  className="flex h-8 w-8 items-center justify-center rounded-md bg-indigo-500/10 text-indigo-400 transition-colors group-hover:bg-indigo-500/20 "
                 >
                   <Icon size={16} />
                 </span>

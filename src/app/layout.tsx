@@ -21,7 +21,7 @@ export default async function RootLayout({
   const theme = await getTheme();
 
   return (
-    <html lang={lang}>
+    <html lang={lang} data-theme={theme}>
       <body className={`${roboto.variable} antialiased bg-background`}>
         <LanguageInit lang={lang} />
         <ThemeInit theme={theme} />
